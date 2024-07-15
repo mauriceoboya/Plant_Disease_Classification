@@ -1,0 +1,19 @@
+schema: '2.0'
+stages:
+  data_ingestion:
+    cmd: python ./src/plant_disease_classification/pipeline/data_ingestion_pipeline.py
+    deps:
+    - path: config/config.yaml
+      hash: md5
+      md5: 3ef2e092b0ea5482a552f1c106a43765
+      size: 251
+    - path: params.yaml
+      hash: md5
+      md5: eea3bbbfd8b153b357b45c90dade5c8d
+      size: 11
+    outs:
+    - path: artifacts/data_ingestion/data
+      hash: md5
+      md5: 5b4dd28b94a5d733bbd241365499dd46.dir
+      size: 1066917850
+      nfiles: 2950

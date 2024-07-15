@@ -1,0 +1,8 @@
+stages:
+  data_ingestion:
+   cmd:  python ./src/plant_disease_classification/pipeline/data_ingestion_pipeline.py
+   deps:
+     - config/config.yaml
+     - params.yaml
+   outs:
+    - artifacts/data_ingestion/data

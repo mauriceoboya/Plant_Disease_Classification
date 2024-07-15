@@ -17,7 +17,7 @@ list_of_files=[
     'research/test.ipynb',
     'main.py',
     f'src/{project}/__init__.py',
-    f'src/{project}/common/__init__.py',
+    f'src/{project}/constants/__init__.py',
     f'src/{project}/config/configuration.py',
     f'src/{project}/utils/common.py',
     f'src/{project}/entity/config_entity.py',
