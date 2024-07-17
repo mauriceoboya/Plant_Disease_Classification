@@ -1,8 +1,8 @@
 
-from plant_disease_classification.entity.config_entity import DataIngestionConfig,PrepareBaseModelConfig
+from plant_disease_classification.entity.config_entity import DataIngestionConfig,PrepareBaseModelConfig,PrepareCallbacksConfig
 from plant_disease_classification.utils.common import read_yaml, create_directories
 from plant_disease_classification.constants import *
-
+import os
 class ConfigurationManager:
     def __init__ (self,config=CONFIGURATION_FILE_PATH,params=PARAMS_FILE_PATH):
         self.config = read_yaml(config)
@@ -40,6 +40,21 @@ class ConfigurationManager:
             params_classes=self.params.CLASSES
         )
         return prepare_base_model_config
+    
+
+    def get_prepare_callbacks_config(self)-> PrepareCallbacksConfig:
+        config=self.config.prepare_callbacks
+        model_ckpt_dir=os.path.dirname(config.checkpoint_model_filepath)
+        create_directories([
+            Path(model_ckpt_dir),
+            Path(config.tensorboard_root_log_dir)
+        ])
+        prepare_callback_config=PrepareCallbacksConfig(
+            root_dir=Path(config.root_dir),
+            tensorboard_root_log_dir=Path(config.tensorboard_root_log_dir),
+            checkpoint_model_filepath=Path(config.checkpoint_model_filepath)
+        )
+        return prepare_callback_config
 
 
 
