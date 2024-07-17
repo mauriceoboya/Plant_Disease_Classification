@@ -6,3 +6,10 @@ stages:
      - params.yaml
    outs:
     - artifacts/data_ingestion/data
+
+  base_model_preparation:
+    cmd:  python  ./src/plant_disease_classification/pipeline/data_preparebasemodel_pipeline.py
+    deps:
+     - artifacts/data_ingestion/data
+     - config/config.yaml
+     - params.yaml
