@@ -13,3 +13,12 @@ stages:
      - artifacts/data_ingestion/data
      - config/config.yaml
      - params.yaml
+
+  training_base_model:
+   cmd:  python  ./src/plant_disease_classification/pipeline/model_training_pipeline.py
+    deps:
+     - artifacts/training
+     - config/config.yaml
+     - params.yaml
+
+    
