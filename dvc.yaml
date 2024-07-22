@@ -20,4 +20,18 @@ stages:
     - config/config.yaml
     - params.yaml
 
+
+  evaluation:
+   cmd: python src/cnnClassifier/pipeline/model_evaluation_pipeline.py  
+   deps:
+   - src/cnnClassifier/pipeline/model_evaluation_pipeline.py
+   - config/config.yaml
+   - artifacts/data_ingestion/data/
+   - artifacts/training/model.h5
+   params:
+   - BATCH_SIZE
+   - IMAGE_SIZE
+   metrics:
+   - scores.json
+
     
