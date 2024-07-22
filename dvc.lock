@@ -9,8 +9,8 @@ stages:
       size: 825
     - path: params.yaml
       hash: md5
-      md5: 422c686ca5be8bffd04920bcdf47f8ca
-      size: 138
+      md5: 13c3b4092961bc7707f931eeb1724884
+      size: 137
     outs:
     - path: artifacts/data_ingestion/data
       hash: md5
@@ -31,5 +31,16 @@ stages:
       size: 825
     - path: params.yaml
       hash: md5
-      md5: 422c686ca5be8bffd04920bcdf47f8ca
-      size: 138
+      md5: 13c3b4092961bc7707f931eeb1724884
+      size: 137
+  training_base_model:
+    cmd: python ./src/plant_disease_classification/pipeline/model_training_pipeline.py
+    deps:
+    - path: config/config.yaml
+      hash: md5
+      md5: 8096462891ad009a5c853d6c08afd5d9
+      size: 825
+    - path: params.yaml
+      hash: md5
+      md5: 13c3b4092961bc7707f931eeb1724884
+      size: 137
