@@ -1,7 +1,8 @@
 from plant_disease_classification.config.configuration import ConfigurationManager
 from plant_disease_classification.components.model_callbacks import PrepareCallbacks
 from plant_disease_classification import logger
-STAGE3="Prepare Callbacks"
+
+STAGE3 = "Prepare Callbacks"
 
 
 class ModelCallbacksPipeline:
@@ -10,15 +11,15 @@ class ModelCallbacksPipeline:
 
     def main(self):
         try:
-            config=ConfigurationManager()
-            prepare_callbacks_config=config.get_prepare_callbacks_config()
-            prepare_callbacks=PrepareCallbacks(config=prepare_callbacks_config)
-            callbacks_list=prepare_callbacks.get_tb_ckpt_callbacks()
+            config = ConfigurationManager()
+            prepare_callbacks_config = config.get_prepare_callbacks_config()
+            prepare_callbacks = PrepareCallbacks(config=prepare_callbacks_config)
+            callbacks_list = prepare_callbacks.get_tb_ckpt_callbacks()
         except Exception as e:
             print(e)
 
 
-if __name__=="__main__":
+if __name__ == "__main__":
     try:
         logger.info(f"Starting >>>>>>>>{STAGE3} pipeline <<<<<<<<<<")
         pipeline = ModelCallbacksPipeline()

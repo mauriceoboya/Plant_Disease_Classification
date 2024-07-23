@@ -4,8 +4,8 @@ from pathlib import Path
 
 @dataclass(frozen=True)
 class DataIngestionConfig:
-    roo_dir:Path
-    source_URL:list
+    roo_dir: Path
+    source_URL: list
     local_data_file: Path
     unzip_dir: Path
 
@@ -25,20 +25,20 @@ class PrepareBaseModelConfig:
 @dataclass(frozen=True)
 class PrepareCallbacksConfig:
     root_dir: Path
-    tensorboard_root_log_dir:Path
-    checkpoint_model_filepath:Path
+    tensorboard_root_log_dir: Path
+    checkpoint_model_filepath: Path
 
 
 @dataclass(frozen=True)
 class TrainingConfig:
-    root_dir:Path
-    trained_model_path:Path
-    updated_model_path:Path
-    Training_data:Path
-    params_epochs:int
-    params_batch_size:int
+    root_dir: Path
+    trained_model_path: Path
+    updated_model_path: Path
+    Training_data: Path
+    params_epochs: int
+    params_batch_size: int
     params_is_augmentation: bool
-    params_image_size:list
+    params_image_size: list
 
 
 @dataclass(frozen=True)

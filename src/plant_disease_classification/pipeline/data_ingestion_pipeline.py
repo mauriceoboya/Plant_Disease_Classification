@@ -3,10 +3,13 @@ from plant_disease_classification.config.configuration import ConfigurationManag
 from plant_disease_classification.components.data_ingestion import DataIngestion
 
 
-STAGE1= "Data ingestion"
+STAGE1 = "Data ingestion"
+
+
 class DataIngestionPipeline:
     def __init__(self):
         pass
+
     def main(self):
         try:
             config_manager = ConfigurationManager()
@@ -19,8 +22,7 @@ class DataIngestionPipeline:
             logger.error(f"Error in data ingestion: {str(e)}")
 
 
-
-if __name__=='__main__':
+if __name__ == "__main__":
     try:
         logger.info(f"Starting >>>>>>>>{STAGE1} pipeline <<<<<<<<<<")
         pipeline = DataIngestionPipeline()
@@ -30,4 +32,3 @@ if __name__=='__main__':
     except:
         logger.error("An error occurred during the data ingestion pipeline execution.")
         logger.info("Data ingestion pipeline failed.")
-
