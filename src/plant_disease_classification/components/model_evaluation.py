@@ -1,7 +1,8 @@
 import tensorflow as tf
 from pathlib import Path
 from plant_disease_classification.entity.config_entity import EvaluationConfig
-
+from plant_disease_classification.utils.common import save_json
+from plant_disease_classification import logger
 class Evaluation:
     def __init__(self, config: EvaluationConfig):
         self.config = config
@@ -35,6 +36,8 @@ class Evaluation:
         self.score=model.evaluate(self.valid_generator)
 
     def save_score(self):
-        scores={"loss":self.score[0],'accuracy':self.score[1]}
-        print(scores)
-        #save_json(path=Path('scores.json'),content=scores)
+        if self.score is None:
+            raise ValueError("No score to save. Please run evaluation first.")
+        scores = {"loss": self.score[0], "accuracy": self.score[1]}
+        logger.info('saving to json')
+        save_json(path=Path('scores.json'), data=scores)

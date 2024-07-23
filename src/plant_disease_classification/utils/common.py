@@ -5,7 +5,7 @@ from plant_disease_classification import logger
 from pathlib import Path
 import joblib
 import base64
-from typing import Any
+from typing import Any,Dict
 from ensure import ensure_annotations
 from box import ConfigBox
 from box.exceptions import BoxValueError
@@ -30,12 +30,11 @@ def create_directories(path_to_directory:list,verbose=True):
             logger.info(f"Creating directory: {path}")
         
 @ensure_annotations
-def save_json(path:Path)->ConfigBox:
-    with open(path) as f:
-        content=json.load(f)
-    logger.info(f"json loaded successfully form:{path}")
-    return ConfigBox(content)
-
+def save_json(path: Path, data: Dict[str, Any]) -> ConfigBox:
+    with open(path, 'w') as f:
+        json.dump(data, f, indent=4)
+    logger.info(f"JSON saved successfully to: {path}")
+    return ConfigBox(data)
 
 @ensure_annotations
 def save_bin(data:Any,path:Path):
