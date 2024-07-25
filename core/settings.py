@@ -42,12 +42,14 @@ INSTALLED_APPS = [
     'rest_framework_swagger',
     "drf_yasg",
     "rest_framework",
+    "corsheaders",
     'prediction'
 ]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -55,6 +57,17 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
+# Django REST Framework settings
+#REST_FRAMEWORK = {
+#    'DEFAULT_AUTHENTICATION_CLASSES': (
+#        'rest_framework_simplejwt.authentication.JWTAuthentication',
+#    ),
+#    'DEFAULT_PERMISSION_CLASSES': (
+#        'rest_framework.permissions.IsAuthenticated',
+#    ),
+#}
+# CORS settings
+CORS_ALLOW_ALL_ORIGINS = True  
 ROOT_URLCONF = "core.urls"
 
 TEMPLATES = [
