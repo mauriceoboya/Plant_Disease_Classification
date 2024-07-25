@@ -23,7 +23,7 @@ schema_view = get_schema_view(
     openapi.Info(
         title="Plant Disease API",
         default_version='v1',
-        description="API documentation for your project",
+        description="plant disease classification model",
     ),
     public=True,
 )
@@ -31,5 +31,6 @@ schema_view = get_schema_view(
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/",include('prediction.urls')),
+     path('api/auth/', include('auth.urls')), 
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
 ]
