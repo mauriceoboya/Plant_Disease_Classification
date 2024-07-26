@@ -31,6 +31,10 @@ stages:
    params:
    - BATCH_SIZE
    - IMAGE_SIZE
- 
 
+  web_application_app:
+    cmd: python manage.py runserver
+    image: python:3.11
+    ports:
+     - "8000:8000"
     
