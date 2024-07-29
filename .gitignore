@@ -399,5 +399,4 @@ FodyWeavers.xsd
 
 ##python virtual environment
 venv/
-.env
 artifacts/
