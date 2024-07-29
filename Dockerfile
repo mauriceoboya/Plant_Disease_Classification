@@ -37,11 +37,6 @@ FROM python:3.11 AS web_application_app
 WORKDIR /app
 COPY . /app
 
-
-
-# Troubleshooting step: Verify the presence of requirements.txt
-RUN ls -la /app/requirements.txt
-
 # Install required packages
 RUN pip install --upgrade pip && \
     pip install -r requirements.txt
