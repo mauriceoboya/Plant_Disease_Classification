@@ -43,8 +43,8 @@ INSTALLED_APPS = [
     "drf_yasg",
     "rest_framework",
     "corsheaders",
-    'prediction',
-    "auth"
+    "prediction",
+    #"auth"
 ]
 
 MIDDLEWARE = [
