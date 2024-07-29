@@ -27,7 +27,11 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    'localhost',
+    'plant-disease-classification-24fq.onrender.com'
+]
 
 
 # Application definition
@@ -43,7 +47,8 @@ INSTALLED_APPS = [
     "drf_yasg",
     "rest_framework",
     "corsheaders",
-    'prediction'
+    'prediction',
+    "auth"
 ]
 
 MIDDLEWARE = [
