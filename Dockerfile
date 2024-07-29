@@ -36,7 +36,23 @@ RUN python src/plant_disease_classification/pipeline/model_evaluation_pipeline.p
 FROM python:3.11 AS web_application_app
 WORKDIR /app
 COPY . /app
+
+# Set environment variable for Django secret key
+ENV SECRET_KEY =
+
+# Set GitHub PAT environment variable
+ARG GITHUB_PAT
+ENV GITHUB_PAT=${GITHUB_PAT}
+
+# Troubleshooting step: Verify the presence of requirements.txt
+RUN ls -la /app/requirements.txt
+
+# Install required packages
 RUN pip install --upgrade pip && \
     pip install -r requirements.txt
+
+# Clone the GitHub repository using PAT
+RUN git clone https://${GITHUB_PAT}@github.com/mauriceoboya/Plant_Disease_Classification.git /app/src/plant-disease-classification
+
 EXPOSE 8000
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
