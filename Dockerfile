@@ -36,10 +36,7 @@ RUN python src/plant_disease_classification/pipeline/model_evaluation_pipeline.p
 FROM python:3.11 AS web_application_app
 WORKDIR /app
 COPY . /app
-
-# Install required packages
 RUN pip install --upgrade pip && \
     pip install -r requirements.txt
-
 EXPOSE 8000
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
