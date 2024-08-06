@@ -8,6 +8,7 @@ import google.generativeai as genai
 from tensorflow.keras.preprocessing import image
 import numpy as np
 import os
+from pathlib import Path
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view,permission_classes
 from django_ratelimit.decorators import ratelimit
@@ -31,7 +32,9 @@ class PredictImageView(APIView):
         file_path = os.path.join(default_storage.location, file_name)
 
         # Load the model
-        model = tf.keras.models.load_model("artifacts/training/model.h5")
+        base_dir = Path(__file__).resolve().parent
+        model_path = base_dir / 'model.h5'
+        model = tf.keras.models.load_model(model_path)
 
         # Preprocess the image
         try:
